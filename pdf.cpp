@@ -5,6 +5,7 @@
 
 PDF::PDF(QString nomDocument)
 {
+    //Nouvelle instance de QPrinter + parametrage
     QPrinter printer(QPrinter::PrinterResolution);
     printer.setOutputFormat(QPrinter::PdfFormat);
     printer.setPaperSize(QPrinter::A4);
@@ -13,14 +14,13 @@ PDF::PDF(QString nomDocument)
     //Creer le document PDF Vierge "nomDocument"
     QTextDocument *leDocument = new QTextDocument;
 
+    //Entetes de la page au format HTML
     contenuDuDocument = "<html><head><meta charset=\"utf8\"><style type=\"text/css\" media=\"print\" >.representation{page-break-inside:avoid;page-break-after:auto;page-break-before:auto;}</head><body>";
 
-
-
+    //Je récupère tout les bateaux voyageurs
     std::vector<BateauVoyageur> mesBateaux = Passerelle::chargerLesBateauxVoyageurs();
 
-
-
+    //Je renvoie l'image et les information de chaque bateau à ma page au format HTML
     for(int i = 0 ; i<mesBateaux.size() ; i++)
     {
 
@@ -31,11 +31,15 @@ PDF::PDF(QString nomDocument)
         contenuDuDocument+="</div>";
     }
 
+    //Fin de la page au format HTML
     contenuDuDocument +="</body></html>";
 
-    qDebug()<<contenuDuDocument;
+    //qDebug()<<contenuDuDocument;
+
+    //J'ajoute mon contenue HTML a mon document
     leDocument->setHtml(contenuDuDocument);
 
+    //Je donne un format à la page et je l'exporte (dossier Debug par défaut)
     leDocument->setPageSize(printer.pageRect().size());
     leDocument->print(&printer);
 

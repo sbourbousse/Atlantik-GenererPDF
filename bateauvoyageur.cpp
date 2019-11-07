@@ -13,10 +13,12 @@ BateauVoyageur::BateauVoyageur(int unId, QString unNom, float uneLongueur, float
 
 QString BateauVoyageur::versChaine()
 {
+    //Constructeur hérité de bateau
     QString infoBateau = Bateau::versChaine();
 
-    infoBateau += "Vitesse : "+QString::number(vitesseBatVoy)+" noeuds<br/>";
+    //J'ajoute les informations relatives au bateau voyageur
 
+    infoBateau += "Vitesse : "+QString::number(vitesseBatVoy)+" noeuds<br/>";
     //Si le bateau possede des equipement
     if(listeEquipement.size()>0)
     {
@@ -33,6 +35,7 @@ QString BateauVoyageur::versChaine()
 
 QString BateauVoyageur::getImageBatVoy()
 {
+    //Renvoie l'image du bateau (par defaut dans le dossier img du dossier debug)
     QString imageDuBateau = "img/"+imageBatVoy;
     return imageDuBateau;
 }

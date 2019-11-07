@@ -22,6 +22,7 @@ int main(int argc, char *argv[])
     //MainWindow w;
     //w.show();
 
+    //Creer le pdf
     PDF *monPDF = new PDF("mesBateaux");
 
     delete monPDF;

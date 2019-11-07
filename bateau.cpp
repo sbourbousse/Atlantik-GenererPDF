@@ -12,6 +12,7 @@ Bateau::Bateau(int unId, QString unNom, float uneLongueur, float uneLargeur)
 
 QString Bateau::versChaine()
 {
+    //Renvoie les informations relative d'un bateau (quelconque qu'il soit bateau de fret ou de voyage)
     QString infoBateau = "Nom du bateau : "+nomBat+"<br/>"
                          "Longueur : "+QString::number(longueurBat)+" mètres<br/>"
                          "Largeur : "+QString::number(largeurBat)+" mètres<br/>";
